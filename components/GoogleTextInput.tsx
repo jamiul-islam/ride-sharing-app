@@ -1,4 +1,4 @@
-import { View, Image } from "react-native";
+import { View, Image, Text } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 
 import { icons } from "@/constants ";
@@ -17,7 +17,7 @@ const GoogleTextInput = ({
     <View
       className={`flex flex-row items-center justify-center relative z-50 rounded-xl ${containerStyle}`}
     >
-      <GooglePlacesAutocomplete
+      {/* <GooglePlacesAutocomplete
         fetchDetails={true}
         placeholder="Search"
         debounce={200}
@@ -76,7 +76,8 @@ const GoogleTextInput = ({
           placeholderTextColor: "gray",
           placeholder: initialLocation ?? "Where do you want to go?",
         }}
-      />
+      /> */}
+      <Text>Test</Text>
     </View>
   );
 };
