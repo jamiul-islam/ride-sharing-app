@@ -1,37 +1,92 @@
 # Ride Sharing App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This project showcases a ride sharing app similar to Uber or Ryde
 
 ## Figma Design
 
 [See design on Figma](https://www.figma.com/design/sYYXxLpiyU7CkvRljZzCRH/Ryde---Uber-Clone-App?node-id=0-1)
 
-## Get started
+## Tech Stack
 
-1. Install dependencies
+- React Native
+- Expo
+- Stripe
+- PostgreSQL
+- Google Maps
+- zustand
+- Clerk
+- Tailwind CSS
 
-   ```bash
-   npm install
-   ```
+## Quick Start
 
-2. Start the app
+Follow these steps to set up the project locally on your machine.
 
-   ```bash
-    npx expo start
-   ```
+**Prerequisites**
 
-In the output, you'll find options to open the app in a
+Make sure you have the following installed on your machine:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/en)
+- [npm](https://www.npmjs.com/) (Node Package Manager)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+**Cloning the Repository**
 
-## Join the community
+```bash
+git clone https://github.com/jamiul-islam/ride-sharing-app.git
+cd ride-sharing-app
+```
 
-Join our community of developers creating universal apps.
+**Installation**
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Install the project dependencies using npm:
+
+```bash
+npm install
+```
+
+**Set Up Environment Variables**
+
+Create a new file named `.env` in the root of your project and add the following content:
+
+```env
+EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=
+
+EXPO_PUBLIC_PLACES_API_KEY=
+EXPO_PUBLIC_DIRECTIONS_API_KEY=
+
+DATABASE_URL=
+
+EXPO_PUBLIC_SERVER_URL=https://uber.dev/
+
+EXPO_PUBLIC_GEOAPIFY_API_KEY=
+
+EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY=
+STRIPE_SECRET_KEY=
+```
+
+Replace the placeholder values with your actual Clerk, Stripe, NeonDB, Google Maps, andgeoapify credentials. You can
+obtain these credentials by signing up on
+the [Clerk](https://clerk.com/), [Stripe](https://stripe.com/in), [NeonDB](https://neon.tech/), [Google Maps](https://console.cloud.google.com/)
+and [geoapify](https://www.geoapify.com/) websites respectively.
+
+**Running the Project**
+
+```bash
+npx expo start
+```
+
+## App Screens
+
+<div style="display: flex; flex-direction: 'row';">
+<img src="/app-snapshots/1.png" width=20%>
+<img src="/app-snapshots/2.png" width=20%>
+<img src="/app-snapshots/3.png" width=20%>
+<img src="/app-snapshots/4.png" width=20%>
+<img src="/app-snapshots/5.png" width=20%>
+<img src="/app-snapshots/6.png" width=20%>
+<img src="/app-snapshots/7.png" width=20%>
+<img src="/app-snapshots/8.png" width=20%>
+<img src="/app-snapshots/9.png" width=20%>
+<img src="/app-snapshots/10.png" width=20%>
+<img src="/app-snapshots/11.png" width=20%>
+</div>
