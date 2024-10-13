@@ -1,6 +1,7 @@
-import { Link } from "expo-router";
-import { useState } from "react";
-import { Image, ScrollView, Text, View } from "react-native";
+import { useSignIn } from "@clerk/clerk-expo";
+import { Link, router } from "expo-router";
+import { useCallback, useState } from "react";
+import { Alert, Image, ScrollView, Text, View } from "react-native";
 
 import CustomButton from "@/components/CustomButton";
 import InputField from "@/components/InputField";
@@ -8,14 +9,34 @@ import OAuth from "@/components/OAuth";
 import { icons, images } from "@/constants ";
 
 const SignIn = () => {
+  const { signIn, setActive, isLoaded } = useSignIn();
+
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
 
-  const onSignInPress = async () => {
-    console.log("sign in pressed");
-  };
+  const onSignInPress = useCallback(async () => {
+    if (!isLoaded) return;
+
+    try {
+      const signInAttempt = await signIn.create({
+        identifier: form.email,
+        password: form.password,
+      });
+
+      if (signInAttempt.status === "complete") {
+        await setActive({ session: signInAttempt.createdSessionId });
+        router.replace("/(root)/(tabs)/home");
+      } else {
+        console.log(JSON.stringify(signInAttempt, null, 2));
+        Alert.alert("Error", "Log in failed. Please try again.");
+      }
+    } catch (err: any) {
+      console.log(JSON.stringify(err, null, 2));
+      Alert.alert("Error", err.errors[0].longMessage);
+    }
+  }, [isLoaded, form]);
 
   return (
     <ScrollView className="flex-1 bg-white">
@@ -23,7 +44,7 @@ const SignIn = () => {
         <View className="relative w-full h-[200px]">
           <Image source={images.signUpCar} className="z-0 w-full h-[200px]" />
           <Text className="text-2xl text-black font-JakartaSemiBold absolute bottom-5 left-5">
-            Create Your Account
+            Welcome 👋
           </Text>
         </View>
 
@@ -36,6 +57,7 @@ const SignIn = () => {
             value={form.email}
             onChangeText={(value) => setForm({ ...form, email: value })}
           />
+
           <InputField
             label="Password"
             placeholder="Enter password"
@@ -45,13 +67,13 @@ const SignIn = () => {
             value={form.password}
             onChangeText={(value) => setForm({ ...form, password: value })}
           />
+
           <CustomButton
-            title="Sign Up"
+            title="Sign In"
             onPress={onSignInPress}
             className="mt-6"
           />
 
-          {/* OAuth */}
           <OAuth />
 
           <Link
@@ -61,8 +83,6 @@ const SignIn = () => {
             Already an user? <Text className="text-primary-500">Sign Up</Text>
           </Link>
         </View>
-
-        {/* Modal Verification */}
       </View>
     </ScrollView>
   );
