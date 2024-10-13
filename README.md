@@ -77,7 +77,7 @@ npx expo start
 
 ## App Screens
 
-<div style="display: flex; flex-direction: 'row';">
+<div style="display: grid; grid-template-columns: repeat(4, 1fr);">
 <img src="/app-snapshots/1.png" width=20%>
 <img src="/app-snapshots/2.png" width=20%>
 <img src="/app-snapshots/3.png" width=20%>
